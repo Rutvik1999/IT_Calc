@@ -315,9 +315,19 @@ public class FinalEmployeeFH implements IConst
 						ProcessBuilder pb=new ProcessBuilder("Notepad.exe",(arr_Str[1]+".txt"));
 						pb.start();
 					}
+					else if (System.getProperty("os.name").contains("Mac OS X")) 
+					{
+						ProcessBuilder pb = new ProcessBuilder("open",(arr_Str[1]+".txt"));
+						pb.start();
+					}
+					else if (System.getProperty("os.name").contains("Linux")) 
+					{
+						ProcessBuilder pb = new ProcessBuilder("gedit", (arr_Str[1] + ".txt"));
+						pb.start();
+					}
 					else
 					{
-						JOptionPane.showMessageDialog(null, "Sorry for Inconvenience ! \nImplicit File open operations are currently supported on Windows only \nHowever, your file has been saved in current Directory");
+						JOptionPane.showMessageDialog(null, "Sorry for Inconvenience ! \nImplicit File open operations are currently supported on : \n- Windows \n-Mac OS X \n-Linux (gedit) \nHowever, your file has been saved in current Directory");
 						System.exit(-1);
 					}
 		        }
